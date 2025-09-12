@@ -1,10 +1,8 @@
-//==========================================================================//
-//Cria a conexão com o banco de dados SQLite e inicializa a tabela "pessoas"
-//==========================================================================//
-
+//Cria a conexão com o banco de dados SQLite e inicializa data.db
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+//Classe para manipulação do banco de dados
 class Database {
   constructor() {
     this.db = new sqlite3.Database(path.join(__dirname, 'data.db'), (err) => {
@@ -13,6 +11,7 @@ class Database {
     });
   }
 
+  //Executa uma query
   run(query, params = []) {
     return new Promise((resolve, reject) => {
       this.db.run(query, params, function(err) {
@@ -22,6 +21,7 @@ class Database {
     });
   }
 
+  //Retorna uma única linha
   get(query, params = []) {
     return new Promise((resolve, reject) => {
       this.db.get(query, params, (err, row) => {

@@ -7,38 +7,56 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Cabeçalho da página -->
   <div class="header">
     <h1>Consulta-CPF</h1>
     <p>Ferramenta para cadastro e consulta de CPFs</p>
   </div>
   
+  <!-- Container principal que agrupa as duas boxes (Cadastro e Pesquisa) -->
+  <!-- Primeira box: Cadastro -->
   <div class="container">
-
     <div class="box">
       <h2>Cadastro</h2>
+      
+      <!-- Campo para digitar o nome do cidadão -->
       <input type="text" id="name" placeholder="Nome">
+      
+      <!-- Campo para digitar o CPF do cidadão -->
       <input type="text" id="cpf" placeholder="CPF">
+      
+      <!-- Botão que aciona o cadastro -->
       <button id="registerBtn">Cadastrar</button>
+      
+      <!-- Div para exibir mensagens de sucesso ou erro do cadastro -->
       <div id="registerMsg" class="message"></div>
     </div>
 
     <div class="divider"></div>
+    <!-- Linha divisória entre as duas boxes -->
 
+    <!-- Segunda box: Pesquisa -->
     <div class="box">
       <h2>Pesquisa</h2>
-      
       <div class="search-options">
+        <!-- Opções para escolher o tipo de pesquisa -->
         <label>
           <input type="radio" name="searchType" value="cpf" checked> CPF
+          <!-- Radio button para pesquisar por CPF -->
         </label>
         <label>
           <input type="radio" name="searchType" value="name"> Nome
+          <!-- Radio button para pesquisar por Nome -->
         </label>
       </div>
 
       <input type="text" id="searchBox" placeholder="Digite CPF ou Nome">
+      <!-- Campo de pesquisa, o texto a ser pesquisado -->
       <button id="searchBtn">Pesquisar</button>
+      <!-- Botão que aciona a pesquisa -->
       <div id="searchMsg" class="message"></div>
+      <!-- Div para exibir mensagens de sucesso ou erro da pesquisa -->
     </div>
   </div>
   

@@ -4,6 +4,7 @@ const assert = require('assert');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./data.db');
 
+//Função auxiliar para fazer requisições HTTP POST
 function post(path, data) {
   return new Promise((resolve, reject) => {
     const options = {
@@ -26,6 +27,7 @@ function post(path, data) {
   });
 }
 
+//Limpa a tabela antes de rodar os testes
 db.run('DELETE FROM pessoas', (err) => {
   if (err) console.error('Erro ao limpar DB:', err);
   else {
@@ -34,6 +36,7 @@ db.run('DELETE FROM pessoas', (err) => {
   }
 });
 
+//Função que contém todos os testes
 async function runTests() {
   console.log('Iniciando testes...');
   try {

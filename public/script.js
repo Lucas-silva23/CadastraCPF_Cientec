@@ -1,3 +1,4 @@
+//Elementos do DOM
 const registerBtn = document.getElementById('registerBtn');
 const searchBtn = document.getElementById('searchBtn');
 
@@ -10,9 +11,9 @@ const searchBox = document.getElementById('searchBox');
 
 const searchTypeRadios = document.querySelectorAll('input[name="searchType"]');
 
-// Formata o CPF enquanto o usuário digita
+//Formata o CPF enquanto o usuário digita
 function formatCPF(value) {
-  value = value.replace(/\D/g, ''); // remove tudo que não for número
+  value = value.replace(/\D/g, ''); //remove tudo que não for número
   if (value.length > 3) value = value.slice(0, 3) + '.' + value.slice(3);
   if (value.length > 7) value = value.slice(0, 7) + '.' + value.slice(7);
   if (value.length > 11) value = value.slice(0, 11) + '-' + value.slice(11, 13);
@@ -26,7 +27,7 @@ cpfInput.addEventListener('input', () => {
 
 searchTypeRadios.forEach(radio => {
   radio.addEventListener('change', () => {
-    // Limpa o campo de pesquisa quando o tipo muda
+    //Limpa o campo de pesquisa quando o tipo muda
     searchBox.value = '';
   });
 });
@@ -47,6 +48,7 @@ searchBox.addEventListener('input', () => {
   }
 });
 
+//Mostra mensagens de sucesso/erro
 function showMessage(msgElement, text, type) {
   msgElement.textContent = text;
   msgElement.className = 'message';
@@ -78,7 +80,7 @@ registerBtn.addEventListener('click', async () => {
   }
 });
 
-// Pesquisa
+//Pesquisa
 searchBtn.addEventListener('click', async () => {
   const query = searchBox.value.trim();
   const searchType = document.querySelector('input[name="searchType"]:checked').value;
@@ -99,7 +101,7 @@ searchBtn.addEventListener('click', async () => {
     if (data.message && data.message === 'Cidadão não encontrado') {
       showMessage(searchMsg, data.message, 'error-msg');
     } else {
-      showMessage(searchMsg, `Usuário Encontrado!\n Nome: ${data.name}\nCPF: ${data.cpf}`, 'success-msg');
+      showMessage(searchMsg, `Cidadão Encontrado!\n Nome: ${data.name}\nCPF: ${data.cpf}`, 'success-msg');
     }
   } catch (err) {
     showMessage(searchMsg, 'Erro no servidor', 'error-msg');
