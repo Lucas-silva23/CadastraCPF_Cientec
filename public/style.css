@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+.divider{
+  height: 360px;
+  width: 1px;
+  color: #ccc;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.header p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;   
+  gap: 20px;              
+}
+
+.box {
+  flex: 1;
+  min-width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.box h2 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.box input {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.box button {
+  padding: 15px;
+  border: none;
+  background-color: #0066cc;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.box button:hover {
+  background-color: #004999;
+}
+
+.divider {
+  width: 2px;
+  background-color: #ccc;
+}
+
+.message {
+  position: relative;      
+  margin-top: 20px;       
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  display: none;           
+  white-space: pre-line; 
+}
+
+.error-msg {
+  background-color: #f8d7da;
+  color: #721c24;
+  display: block;          
+}
+
+.success-msg {
+  background-color: #d4edda;
+  color: #155724;
+  display: block;        
+}
