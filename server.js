@@ -14,7 +14,7 @@ class Pessoa {
     this.name = name;
     this.cpf = this.normalizeCpf(cpf);
   }
-
+  
   normalizeCpf(cpf) {
     return cpf ? cpf.replace(/\D/g, '') : '';
   }

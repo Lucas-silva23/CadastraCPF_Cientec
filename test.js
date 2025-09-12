@@ -1,0 +1,63 @@
+const http = require('http');
+const assert = require('assert');
+
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./data.db');
+
+function post(path, data) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'localhost',
+      port: 3000,
+      path,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    const req = http.request(options, (res) => {
+      let body = '';
+      res.on('data', (chunk) => (body += chunk));
+      res.on('end', () => resolve(JSON.parse(body)));
+    });
+
+    req.on('error', reject);
+    req.write(JSON.stringify(data));
+    req.end();
+  });
+}
+
+db.run('DELETE FROM pessoas', (err) => {
+  if (err) console.error('Erro ao limpar DB:', err);
+  else {
+    console.log('Banco de dados limpo para testes.');
+    runTests();
+  }
+});
+
+async function runTests() {
+  console.log('Iniciando testes...');
+  try {
+    let res = await post('/api/register', { name: 'João Silva', cpf: '123.456.789-00' });
+    assert.strictEqual(res.message, 'Cadastro efetuado!');
+    console.log('Cadastro OK');
+
+    res = await post('/api/register', { name: 'João Silva', cpf: '123.456.789-00' });
+    assert.strictEqual(res.message, 'CPF já cadastrado!');
+    console.log('Cadastro duplicado OK');
+
+    res = await post('/api/search', { query: '123.456.789-00' });
+    assert.strictEqual(res.name, 'João Silva');
+    console.log('Pesquisa CPF existente OK');
+
+    res = await post('/api/search', { query: '999.999.999-99' });
+    assert.strictEqual(res.message, 'Cidadão não encontrado');
+    console.log('Pesquisa CPF não existente OK');
+
+    res = await post('/api/search', { query: 'LLLLLLLLLLL' });
+    assert.strictEqual(res.message, 'Cidadão não encontrado');
+    console.log('Pesquisa Nome não existente OK');
+
+  } catch (err) {
+    console.error('Teste falhou:', err);
+  }
+}
