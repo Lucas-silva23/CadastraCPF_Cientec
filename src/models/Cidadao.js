@@ -1,6 +1,7 @@
 const db = require('../db/db');
 const { apenasNumeros, validarCpf } = require('../utils/utils');
 
+//Classe Cidadão para manipulação dos dados
 class Cidadao {
   constructor(name, cpf) {
     this.name = name;
