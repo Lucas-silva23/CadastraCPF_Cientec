@@ -25,8 +25,23 @@ CadastraCPF_Cientec/
 │  ├─ index.html
 │  ├─ style.css
 │  └─ script.js
-├─ db.js
+│
+├─ src/
+│  ├─ controllers/
+│  │  └─ CidadaoController.js
+│  ├─ db/
+│  │  ├─ db.js
+│  │  └─ init.js
+│  ├─ models/
+│  │  └─ Cidadao.js
+│  └─ utils/
+│     └─ utils.js
+│
+├─ test/
+│  └─ test.js
+│
 ├─ server.js
+├─ package-lock.json
 └─ package.json
 ```
 ## 📥 Instalação
@@ -52,6 +67,25 @@ cd CadastraCPF_Cientec/
 npm install  
 ```
 
+## ⏯️ Executar Aplicação
+
+### Para executar a aplicação rode o comando:
+
+```
+npm start
+```
+
+### Abra o navegador e entre na URL:
+
+http://localhost:3000
+
+#### Lista de CPFs válidos para teste (gerados pelo site `https://www.4devs.com.br/gerador_de_cpf`):
+
+- 000.088.480-41
+- 968.802.150-41
+- 862.911.440-18
+- 717.872.080-87
+
 ## 🪧 Rodar Teste Automatizado
 
 ### Para rodar o teste automatizado, inicie o server em um terminal:
@@ -65,18 +99,3 @@ npm start
 ```
 node test.js
 ```
-
-## ⏯️ Executar Aplicação
-
-### Para executar a aplicação rode o comando:
-
-```
-npm start
-```
-
-### Abra o navegador e entre na URL:
-
-http://localhost:3000
-
-
-
