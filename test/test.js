@@ -27,24 +27,28 @@ function post(path, data) {
   });
 }
 
-//Limpa a tabela antes de rodar os testes
-db.run('DELETE FROM cidadao', (err) => {
-  if (err) console.error('Erro ao limpar DB:', err);
-  else {
-    console.log('Banco de dados limpo para testes.');
-    runTests();
+// Limpa os cidadaos usados nos testes
+db.run(
+  `DELETE FROM cidadao WHERE cpf IN (?, ?)`,
+  ['16552049714', '00000000000'],
+  (err) => {
+    if (err) console.error('Erro ao limpar registros de teste:', err);
+    else {
+      console.log('Registros de teste removidos do banco.');
+      runTests();
+    }
   }
-});
+);
 
 //Função que contém todos os testes
 async function runTests() {
   console.log('Iniciando testes...');
   try {
-    let res = await post('/api/register', { name: 'João Silva', cpf: '165.520.497-14' });
+    let res = await post('/api/register', { name: 'Lucas Silva', cpf: '165.520.497-14' });
     assert.strictEqual(res.message, 'Cadastro efetuado!');
     console.log('Cadastro de novo Cidadão: OK');
 
-    res = await post('/api/register', { name: 'João Silva', cpf: '165.520.497-14' });
+    res = await post('/api/register', { name: 'Lucas Silva', cpf: '165.520.497-14' });
     assert.strictEqual(res.message, 'CPF já cadastrado!');
     console.log('Cadastro CPF duplicado: OK');
 
@@ -53,7 +57,7 @@ async function runTests() {
     console.log('Cadastro CPF Inválido: OK');
 
     res = await post('/api/search', { query: '165.520.497-14' });
-    assert.strictEqual(res.name, 'João Silva');
+    assert.strictEqual(res.name, 'Lucas Silva');
     console.log('Pesquisa CPF existente: OK');
 
     res = await post('/api/search', { query: '999.999.999-99' });
