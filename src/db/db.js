@@ -28,6 +28,15 @@ class Database {
       });
     });
   }
+
+  all(query, params = []) {
+    return new Promise((resolve, reject) => {
+      this.db.all(query, params, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  }
 }
 
 module.exports = new Database();

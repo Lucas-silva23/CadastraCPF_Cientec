@@ -24,9 +24,17 @@ class Cidadao {
 
   static async search(query) {
     const cpf = apenasNumeros(query);
-    const row = await db.get('SELECT name, cpf FROM cidadao WHERE cpf = ? OR name = ? LIMIT 1', [cpf, query]);
-    if (!row) return { message: 'Cidadão não encontrado' };
-    return row;
+
+    if (cpf.length === 11) {
+      const row = await db.get('SELECT name, cpf FROM cidadao WHERE cpf = ?', [cpf]);
+      if (!row) return { message: 'Cidadão não encontrado' };
+      return row;
+    }
+
+    //senão busca por nome, pode ter vários
+    const rows = await db.all('SELECT name, cpf FROM cidadao WHERE name = ?', [query]);
+    if (!rows || rows.length === 0) return { message: 'Cidadão não encontrado' };
+    return { results: rows };
   }
 }
 

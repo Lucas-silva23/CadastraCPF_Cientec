@@ -8,7 +8,7 @@ async function initDB() {
       cpf TEXT UNIQUE NOT NULL
     )
   `);
-  console.log('Tabela cidadao inicializada!');
+  //console.log('Tabela cidadao inicializada!');
 }
 
 module.exports = initDB;

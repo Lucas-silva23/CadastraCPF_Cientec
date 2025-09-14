@@ -163,10 +163,15 @@ searchBtn.addEventListener('click', async () => {
 
     if (data.message === 'Cidadão não encontrado') {
       showMessage(searchMsg, data.message, 'error-msg');
+    } else if (data.results) {
+      let msg = 'Cidadãos encontrados:\n\n';
+      data.results.forEach(c => {
+        msg += `Nome: ${c.name}\nCPF: ${c.cpf}\n\n`;
+      });
+      showMessage(searchMsg, msg.trim(), 'success-msg');
     } else {
       showMessage(searchMsg, `Cidadão Encontrado!\nNome: ${data.name}\nCPF: ${data.cpf}`, 'success-msg');
     }
-
   } catch (err) {
     showMessage(searchMsg, 'Erro no servidor', 'error-msg');
   }
