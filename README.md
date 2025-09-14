@@ -93,5 +93,6 @@ npm start
 ### Depois, abra outro terminal e rode o comando:
 
 ```
+cd test/
 node test.js
 ```
