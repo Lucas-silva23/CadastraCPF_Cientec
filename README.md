@@ -8,14 +8,14 @@ Ferramenta web para cadastro e pesquisa de cidadãos por CPF ou Nome. A aplicaç
 
 - Pesquisa por CPF ou Nome, com opção de seleção via radio button.
 
-- Validação de formato do CPF (máscara XXX.XXX.XXX-XX).
+- Validação automática do CPF.
 
 - Mensagens de sucesso ou erro exibidas de forma clara.
 
 ## 🛠 Pré-requisitos
 
-- Node.js
-- SQLite
+- Node.js (Versão utilizada: v23.6.0)
+- SQLite  
 
 ## 📂 Estrutura do Projeto
 
@@ -50,18 +50,14 @@ CadastraCPF_Cientec/
 
 - Baixe e instale em: https://nodejs.org/
 
-### 2. Instale o SQLite caso ainda não tenha:
-
-- Baixe e instale em: https://www.sqlite.org/download.html
-
-### 3. Clone o Repositório:
+### 2. Clone o Repositório:
 
 ```
 git clone https://github.com/Lucas-silva23/CadastraCPF_Cientec.git
 cd CadastraCPF_Cientec/
 ```
 
-### 4. Instale as dependências:
+### 3. Instale as dependências:
 
 ```
 npm install  
