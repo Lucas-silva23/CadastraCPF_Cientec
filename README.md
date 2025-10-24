@@ -1,8 +1,8 @@
-# 📝 CadastraCPF_Cientec
+# CadastraCPF_Cientec
 
 Ferramenta web para cadastro e pesquisa de cidadãos por CPF ou Nome. A aplicação usa Node.js, Express, SQLite e front-end em HTML, CSS e JavaScript.
 
-## 📌 Funcionalidades
+## Funcionalidades
 
 - Cadastro de cidadão com Nome e CPF.
 
@@ -12,12 +12,12 @@ Ferramenta web para cadastro e pesquisa de cidadãos por CPF ou Nome. A aplicaç
 
 - Mensagens de sucesso ou erro exibidas de forma clara.
 
-## 🛠 Pré-requisitos
+## Pré-requisitos
 
 - Node.js (Versão utilizada: v23.6.0)
 - SQLite  
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ``` 
 CadastraCPF_Cientec/
@@ -44,7 +44,7 @@ CadastraCPF_Cientec/
 ├─ package-lock.json
 └─ package.json
 ```
-## 📥 Instalação
+## Instalação
 
 ### 1. Instale o Node.js:
 
@@ -63,7 +63,7 @@ cd CadastraCPF_Cientec/
 npm install  
 ```
 
-## ⏯️ Executar Aplicação
+## Executar Aplicação
 
 ### Para executar a aplicação rode o comando:
 
@@ -82,7 +82,7 @@ http://localhost:3000
 - 862.911.440-18
 - 717.872.080-87
 
-## 🪧 Rodar Teste Automatizado
+## Rodar Teste Automatizado
 
 ### Para rodar o teste automatizado, inicie o server em um terminal:
 
